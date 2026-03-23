@@ -114,7 +114,14 @@ Link: https://docs.google.com/document/d/1LCegVQcUbNJfttsY5raXymtj37GTeLhx/edit?
 - Advanced analytics including device, browser, and geographic distributions.
 - Public statistics pages for individual links.
 - Custom vanity aliases for branded short links.
-
 ---
+
+## Note on Demo Links
+
+The shortened links used in the demo video are generated from the local development environment (`localhost`). 
+
+As a result, these links will only work while the backend server is running locally. If the server is not running, the shortened URLs will not redirect.
+
+For demonstration purposes, please refer to the video to see the full functionality of link redirection and analytics in action.
 
 This project is a part of a hackathon run by https://katomaran.com
