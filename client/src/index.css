@@ -1,0 +1,195 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Base ─────────────────────────────────────────── */
+@layer base {
+  * { box-sizing: border-box; }
+
+  body {
+    background-color: #0a0a0f;
+    background-image:
+      linear-gradient(rgba(42,42,58,0.4) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(42,42,58,0.4) 1px, transparent 1px);
+    background-size: 40px 40px;
+    min-height: 100vh;
+  }
+
+  ::-webkit-scrollbar       { width: 5px; height: 5px; }
+  ::-webkit-scrollbar-track { background: #0f0f18; }
+  ::-webkit-scrollbar-thumb { background: #2a2a3a; border-radius: 3px; }
+  ::-webkit-scrollbar-thumb:hover { background: #3a3a50; }
+
+  ::selection { background: rgba(124,107,255,0.3); color: #fff; }
+}
+
+/* ── Design-system components ─────────────────────── */
+@layer components {
+
+  /* Cards */
+  .snip-card {
+    @apply rounded-xl border border-surface-500/60 bg-surface-800 shadow-card;
+  }
+  .snip-card-glass {
+    @apply rounded-xl border border-white/[0.06] bg-surface-800/70 shadow-card backdrop-blur-md;
+  }
+
+  /* Buttons */
+  .snip-btn {
+    @apply inline-flex items-center gap-2 rounded-lg border border-surface-400/60
+           bg-surface-700 px-4 py-2 text-sm font-medium text-slate-200
+           transition-all duration-150
+           hover:border-surface-400 hover:bg-surface-600 hover:text-white
+           active:scale-[0.98] disabled:pointer-events-none disabled:opacity-50;
+  }
+  .snip-btn-primary {
+    @apply inline-flex items-center gap-2 rounded-lg border border-accent/40
+           bg-accent px-4 py-2 text-sm font-semibold text-white
+           shadow-glow-sm transition-all duration-150
+           hover:bg-accent-dim hover:shadow-glow
+           active:scale-[0.98] disabled:pointer-events-none disabled:opacity-50;
+  }
+  .snip-btn-ghost {
+    @apply inline-flex items-center gap-2 rounded-lg border border-transparent
+           px-4 py-2 text-sm font-medium text-slate-400
+           transition-all duration-150
+           hover:border-surface-400/60 hover:bg-surface-700 hover:text-slate-200
+           active:scale-[0.98] disabled:pointer-events-none disabled:opacity-50;
+  }
+  .snip-btn-danger {
+    @apply inline-flex items-center gap-2 rounded-lg border border-danger/30
+           bg-danger/10 px-4 py-2 text-sm font-medium text-red-300
+           transition-all duration-150
+           hover:bg-danger/20 hover:text-red-200
+           active:scale-[0.98] disabled:pointer-events-none disabled:opacity-50;
+  }
+  .snip-btn-icon {
+    @apply inline-flex items-center justify-center rounded-lg border border-surface-400/50
+           bg-surface-700/60 p-2 text-slate-400
+           transition-all duration-150
+           hover:border-surface-400 hover:bg-surface-600 hover:text-slate-200
+           active:scale-[0.97] disabled:pointer-events-none disabled:opacity-50;
+  }
+
+  /* Inputs */
+  .snip-input {
+    @apply w-full rounded-lg border border-surface-500/80 bg-surface-700
+           px-3.5 py-2.5 text-sm text-slate-100 placeholder-slate-500
+           outline-none transition-all duration-150
+           focus:border-accent/60 focus:ring-2 focus:ring-accent/15
+           disabled:cursor-not-allowed disabled:opacity-50;
+  }
+  .snip-label {
+    @apply block text-xs font-medium uppercase tracking-widest text-slate-500;
+  }
+
+  /* Badges */
+  .snip-badge {
+    @apply inline-flex items-center gap-1 rounded-full border px-2.5 py-0.5 text-[11px] font-medium;
+  }
+  .snip-badge-purple {
+    @apply snip-badge border-accent/25 bg-accent/10 text-accent-bright;
+  }
+  .snip-badge-green {
+    @apply snip-badge border-success/25 bg-success/10 text-emerald-400;
+  }
+  .snip-badge-amber {
+    @apply snip-badge border-warn/25 bg-warn/10 text-amber-400;
+  }
+  .snip-badge-red {
+    @apply snip-badge border-danger/25 bg-danger/10 text-red-400;
+  }
+
+  /* Alerts */
+  .snip-alert-error   { @apply rounded-lg border border-danger/30  bg-danger/10  p-3 text-sm text-red-300; }
+  .snip-alert-success { @apply rounded-lg border border-success/30 bg-success/10 p-3 text-sm text-emerald-300; }
+  .snip-alert-info    { @apply rounded-lg border border-accent/30  bg-accent/10  p-3 text-sm text-accent-bright; }
+
+  /* Stat card */
+  .snip-stat {
+    @apply snip-card p-4 flex flex-col gap-1;
+  }
+  .snip-stat-label {
+    @apply text-[10px] font-semibold uppercase tracking-[0.1em] text-slate-500;
+  }
+  .snip-stat-value {
+    @apply font-display text-3xl font-bold text-slate-100;
+  }
+
+  /* Table */
+  .snip-table          { @apply w-full border-collapse text-sm; }
+  .snip-table thead th { @apply border-b border-surface-500/60 px-4 py-3 text-left text-[10px] font-semibold uppercase tracking-widest text-slate-500; }
+  .snip-table tbody td { @apply border-b border-surface-500/30 px-4 py-3.5 align-middle; }
+  .snip-table tbody tr:last-child td { @apply border-b-0; }
+  .snip-table tbody tr { @apply transition-colors duration-100 hover:bg-white/[0.025]; }
+
+  /* Nav */
+  .snip-nav {
+    @apply sticky top-0 z-50 border-b border-surface-500/40 bg-surface-950/80 backdrop-blur-xl;
+  }
+
+  /* Sidebar */
+  .snip-sidebar {
+    @apply flex h-full w-60 flex-col border-r border-surface-500/40 bg-surface-900/60;
+  }
+  .snip-nav-link {
+    @apply flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium
+           text-slate-400 transition-all duration-150
+           hover:bg-surface-700/60 hover:text-slate-200;
+  }
+  .snip-nav-link.active {
+    @apply bg-accent/10 text-accent-bright border border-accent/20;
+  }
+
+  /* Mono short URLs */
+  .snip-short {
+    @apply font-mono text-sm text-accent-bright hover:text-accent-glow transition-colors;
+  }
+
+  /* Spinner */
+  .snip-spinner {
+    @apply h-4 w-4 animate-spin rounded-full border-2 border-white/20 border-t-white;
+  }
+
+  /* Section heading */
+  .snip-section-title {
+    @apply font-display text-xl font-bold tracking-tight text-slate-100;
+  }
+
+  /* Action buttons in table */
+  .btn-copy   { @apply snip-btn-icon text-blue-400   hover:text-blue-300   hover:border-blue-500/40   hover:bg-blue-500/10; }
+  .btn-share  { @apply snip-btn-icon text-violet-400 hover:text-violet-300 hover:border-violet-500/40 hover:bg-violet-500/10; }
+  .btn-open   { @apply snip-btn-icon text-emerald-400 hover:text-emerald-300 hover:border-emerald-500/40 hover:bg-emerald-500/10; }
+  .btn-intel  { @apply snip-btn-icon hover:border-accent/40 hover:text-accent-bright; }
+  .btn-delete { @apply snip-btn-icon text-red-400 hover:text-red-300 hover:border-danger/40 hover:bg-danger/10; }
+}
+
+/* ── Focus ring ───────────────────────────────────── */
+:focus-visible {
+  outline: 2px solid rgba(124, 107, 255, 0.6);
+  outline-offset: 2px;
+}
+
+/* ── Animations ────────────────────────────────────── */
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes scale-in {
+  from { opacity: 0; transform: scale(0.95); }
+  to   { opacity: 1; transform: scale(1); }
+}
+@keyframes slide-in {
+  from { transform: translateX(-10px); opacity: 0; }
+  to   { transform: translateX(0); opacity: 1; }
+}
+
+.animate-fade-up { animation: fade-up 0.4s ease-out both; }
+.animate-scale-in { animation: scale-in 0.2s ease-out both; }
+.animate-slide-in { animation: slide-in 0.3s ease-out both; }
+
+.stagger-1 { animation-delay: 0.05s; }
+.stagger-2 { animation-delay: 0.10s; }
+.stagger-3 { animation-delay: 0.15s; }
+.stagger-4 { animation-delay: 0.20s; }
+.stagger-5 { animation-delay: 0.25s; }
